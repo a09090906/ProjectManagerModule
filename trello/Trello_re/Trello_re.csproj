@@ -1,0 +1,480 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ED2C36D4-4CF9-4E91-9D30-8F3921114656}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trello_re</RootNamespace>
+    <AssemblyName>Trello_re</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.51116.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\trello\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\..\Users\534212\Documents\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ITRIRegex, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\trello\RefDll\ITRIRegex.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\trello\Bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SSOUtil, Version=1.0.4419.30932, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\trello\RefDll\SSOUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ashx\card.ashx" />
+    <Content Include="ashx\card_change.ashx" />
+    <Content Include="ashx\card_delete.ashx" />
+    <Content Include="ashx\card_insert.ashx" />
+    <Content Include="ashx\card_sort.ashx" />
+    <Content Include="ashx\card_update.ashx" />
+    <Content Include="ashx\card_view.ashx" />
+    <Content Include="ashx\chat.ashx" />
+    <Content Include="ashx\chat_insert.ashx" />
+    <Content Include="ashx\delete.ashx" />
+    <Content Include="ashx\edit.ashx" />
+    <Content Include="ashx\edit_delete_file.ashx" />
+    <Content Include="ashx\edit_file.ashx" />
+    <Content Include="ashx\edit_team_list.ashx" />
+    <Content Include="ashx\insert.ashx" />
+    <Content Include="ashx\log.ashx" />
+    <Content Include="ashx\log_data.ashx" />
+    <Content Include="ashx\namelist.ashx" />
+    <Content Include="ashx\share.ashx" />
+    <Content Include="ashx\sub_delete.ashx" />
+    <Content Include="ashx\sub_edit.ashx" />
+    <Content Include="ashx\sub_edit_group.ashx" />
+    <Content Include="ashx\sub_insert.ashx" />
+    <Content Include="ashx\sub_sort.ashx" />
+    <Content Include="ashx\sub_update.ashx" />
+    <Content Include="ashx\team_group_run.ashx" />
+    <Content Include="ashx\team_list.ashx" />
+    <Content Include="ashx\trello_sub.ashx" />
+    <Content Include="ashx\update.ashx" />
+    <Content Include="ashx\uploadFile.ashx" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll.refresh" />
+    <Content Include="bin\Newtonsoft.Json.dll.refresh" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.exe.refresh" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.exe.refresh" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll.refresh" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll.refresh" />
+    <Content Include="bin\roslyn\System.AppContext.dll.refresh" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll.refresh" />
+    <Content Include="bin\roslyn\System.Console.dll.refresh" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll.refresh" />
+    <Content Include="bin\roslyn\System.Diagnostics.Process.dll.refresh" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll.refresh" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll.refresh" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll.refresh" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.DriveInfo.dll.refresh" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll.refresh" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll.refresh" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll.refresh" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll.refresh" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll.refresh" />
+    <Content Include="bin\roslyn\System.Threading.Thread.dll.refresh" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll.refresh" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll.refresh" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll.refresh" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll.refresh" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll.refresh" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.exe.refresh" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.refresh" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="images\icon_search.png" />
+    <Content Include="js_plupload\Moxie.xap" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\Trello_re.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\Trello_re.csprojResolveAssemblyReference.cache" />
+    <Content Include="ashx\com_serch.ashx" />
+    <Content Include="ashx\sub_ex.ashx" />
+    <Content Include="ashx\sub_list.ashx" />
+    <Content Include="ashx\sub_list_chenge.ashx" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="multileselect.aspx" />
+    <Content Include="singleselect.aspx" />
+    <Content Include="test.aspx" />
+    <Content Include="trello_tast.ashx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\AjaxControlToolkit.dll" />
+    <Content Include="bin\ITRIRegex.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.Process.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.DriveInfo.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.Threading.Thread.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\SmartGridView.dll" />
+    <Content Include="bin\SSOUtil.dll" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\collapse.css" />
+    <Content Include="css\colorbox.css" />
+    <Content Include="css\cssie9.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\jquery-sortable-min.css" />
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\jquery.datetimepicker.css" />
+    <Content Include="css\jquery.mmenu.css" />
+    <Content Include="css\jquery.powertip.css" />
+    <Content Include="css\jquery.simplecolorpicker.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\OchiColor.css" />
+    <Content Include="css\OchiLayout.css" />
+    <Content Include="css\OchiRWD.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\style00.css" />
+    <Content Include="css\superfish.css" />
+    <Content Include="File_Upload.aspx" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\logo.png" />
+    <Content Include="js\autoHeight.js" />
+    <Content Include="js\downfile.js" />
+    <Content Include="js\duplicateFields.min.js" />
+    <Content Include="js\GenCommon.js" />
+    <Content Include="js\jquery-1.11.2.min.js" />
+    <Content Include="js\jquery-cloneya.min.js" />
+    <Content Include="js\jquery-sortable-min.js" />
+    <Content Include="js\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="js\jquery-ui.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.breakpoint-min.js" />
+    <Content Include="js\jquery.collapse.js" />
+    <Content Include="js\jquery.collapse_storage.js" />
+    <Content Include="js\jquery.colorbox-min.js" />
+    <Content Include="js\jquery.datetimepicker.js" />
+    <Content Include="js\jquery.easytabs.min.js" />
+    <Content Include="js\jquery.inline-edit.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.magnific-popup.min.js" />
+    <Content Include="js\jquery.mmenu.min.js" />
+    <Content Include="js\jquery.ns-autogrow.min.js" />
+    <Content Include="js\jquery.placeholder.min.js" />
+    <Content Include="js\jquery.powertip.min.js" />
+    <Content Include="js\jquery.simplecolorpicker.js" />
+    <Content Include="js\jquery.touchSwipe.min.js" />
+    <Content Include="js\PageCommon.js" />
+    <Content Include="js\superfish.min.js" />
+    <Content Include="js\supposition.js" />
+    <Content Include="js_plupload\i18n\bs.js" />
+    <Content Include="js_plupload\i18n\cs.js" />
+    <Content Include="js_plupload\i18n\cy.js" />
+    <Content Include="js_plupload\i18n\da.js" />
+    <Content Include="js_plupload\i18n\de.js" />
+    <Content Include="js_plupload\i18n\el.js" />
+    <Content Include="js_plupload\i18n\en.js" />
+    <Content Include="js_plupload\i18n\es.js" />
+    <Content Include="js_plupload\i18n\et.js" />
+    <Content Include="js_plupload\i18n\fa.js" />
+    <Content Include="js_plupload\i18n\fi.js" />
+    <Content Include="js_plupload\i18n\fr.js" />
+    <Content Include="js_plupload\i18n\he.js" />
+    <Content Include="js_plupload\i18n\hr.js" />
+    <Content Include="js_plupload\i18n\hu.js" />
+    <Content Include="js_plupload\i18n\hy.js" />
+    <Content Include="js_plupload\i18n\it.js" />
+    <Content Include="js_plupload\i18n\ja.js" />
+    <Content Include="js_plupload\i18n\ka.js" />
+    <Content Include="js_plupload\i18n\kk.js" />
+    <Content Include="js_plupload\i18n\ko.js" />
+    <Content Include="js_plupload\i18n\lt.js" />
+    <Content Include="js_plupload\i18n\lv.js" />
+    <Content Include="js_plupload\i18n\nl.js" />
+    <Content Include="js_plupload\i18n\pl.js" />
+    <Content Include="js_plupload\i18n\pt_BR.js" />
+    <Content Include="js_plupload\i18n\ro.js" />
+    <Content Include="js_plupload\i18n\ru.js" />
+    <Content Include="js_plupload\i18n\sk.js" />
+    <Content Include="js_plupload\i18n\sr.js" />
+    <Content Include="js_plupload\i18n\sv.js" />
+    <Content Include="js_plupload\i18n\th_TH.js" />
+    <Content Include="js_plupload\i18n\tr.js" />
+    <Content Include="js_plupload\i18n\uk_UA.js" />
+    <Content Include="js_plupload\i18n\zh_CN.js" />
+    <Content Include="js_plupload\i18n\zh_TW.js" />
+    <Content Include="js_plupload\jquery.plupload.queue\css\jquery.plupload.queue.css" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\backgrounds.gif" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\buttons-disabled.png" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\buttons.png" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\delete.gif" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\done.gif" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\error.gif" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\throbber.gif" />
+    <Content Include="js_plupload\jquery.plupload.queue\img\transp50.png" />
+    <Content Include="js_plupload\jquery.plupload.queue\jquery.plupload.queue.js" />
+    <Content Include="js_plupload\jquery.plupload.queue\jquery.plupload.queue.min.js" />
+    <Content Include="js_plupload\jquery.ui.plupload\css\jquery.ui.plupload.css" />
+    <Content Include="js_plupload\jquery.ui.plupload\img\loading.gif" />
+    <Content Include="js_plupload\jquery.ui.plupload\img\plupload.png" />
+    <Content Include="js_plupload\jquery.ui.plupload\jquery.ui.plupload.js" />
+    <Content Include="js_plupload\jquery.ui.plupload\jquery.ui.plupload.min.js" />
+    <Content Include="js_plupload\moxie.js" />
+    <Content Include="js_plupload\moxie.min.js" />
+    <Content Include="js_plupload\Moxie.swf" />
+    <Content Include="js_plupload\plupload.dev.js" />
+    <Content Include="js_plupload\plupload.full.min.js" />
+    <Content Include="js_plupload\plupload.min.js" />
+    <Content Include="log.aspx" />
+    <Content Include="RefDll\AjaxControlToolkit.dll" />
+    <Content Include="RefDll\SmartGridView.dll" />
+    <Content Include="trello_sub.aspx" />
+    <Content Include="trello_tast.aspx" />
+    <Content Include="UploadedFiles\S__2637877.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ashx\com_serch.ashx.cs">
+      <DependentUpon>com_serch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\sub_ex.ashx.cs">
+      <DependentUpon>sub_ex.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\sub_list.ashx.cs">
+      <DependentUpon>sub_list.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\sub_list_chenge.ashx.cs">
+      <DependentUpon>sub_list_chenge.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="File_Upload.aspx.designer.cs">
+      <DependentUpon>File_Upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="log.aspx.designer.cs">
+      <DependentUpon>log.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="multileselect.aspx.cs">
+      <DependentUpon>multileselect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="multileselect.aspx.designer.cs">
+      <DependentUpon>multileselect.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="singleselect.aspx.cs">
+      <DependentUpon>singleselect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="trello_sub.aspx.cs">
+      <DependentUpon>trello_sub.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="trello_sub.aspx.designer.cs">
+      <DependentUpon>trello_sub.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="trello_tast.aspx.cs">
+      <DependentUpon>trello_tast.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Old_App_Code\Base64.cs" />
+    <Compile Include="Old_App_Code\dal.cs" />
+    <Compile Include="Error.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="File_Upload.aspx.cs">
+      <DependentUpon>File_Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="log.aspx.cs">
+      <DependentUpon>log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="trello_tast.aspx.designer.cs">
+      <DependentUpon>trello_tast.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4332</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4332/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此專案參考這部電腦上所缺少的 NuGet 封裝。請啟用 NuGet 封裝還原，以下載該封裝。如需詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的檔案是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.4.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

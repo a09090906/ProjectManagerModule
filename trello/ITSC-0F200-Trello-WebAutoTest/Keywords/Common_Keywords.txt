@@ -1,0 +1,96 @@
+*** Settings ***
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           Process
+Resource          ../Variables/Trello_Variables.txt
+
+*** Keywords ***
+Update Chromedriver
+    [Documentation]    Update current web drvier for this machine.
+    # First check if outside network is available
+    ${Return code}    ${Output}=    Run and Return RC And Output    ping 8.8.8.8 -n 1
+    Log    ${Return code}
+    Return From Keyword If    '${Return code}' != '0'
+    # Get lastest version number
+    ${Wget output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}wget.exe    --progress\=bar:force:noscroll    -O    ${gTemp folder path}${/}chromedirver_latest.txt    https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+    ...    stderr=STDOUT
+    ${Wget output}=    Set Variable    ${Wget output.stdout}
+    Should Contain    ${Wget output}    chromedirver_latest.txt' saved
+    ${Latest driver version}    Get File    ${gTemp folder path}${/}chromedirver_latest.txt
+    # Get current system driver version
+    ## Using ignore error to prevent commad error.
+    ${Status}    ${Current driver version}=    Run Keyword And Ignore Error    Run Process    chromedriver    --version    stderr=STDOUT
+    ...    timeout=2 sec    on_timeout=terminate
+    ${Current driver version}=    Set Variable If    "${Status}" == "PASS"    ${Current driver version.stdout}
+    # If driver is up-to-date, no need to re-download it.
+    ${Status}    ${Message}=    Run Keyword And Ignore Error    Should Contain    ${Current driver version}    ${Latest driver version}
+    Return From Keyword If    "${Status}" == "PASS"
+    # Download latest driver
+    ${Wget output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}wget.exe    --no-check-certificate    --progress\=bar:force:noscroll    -O    ${gTemp folder path}${/}chromedriver_win32.zip
+    ...    https://chromedriver.storage.googleapis.com/${Latest driver version}/chromedriver_win32.zip    stderr=STDOUT    timeout=10 sec    on_timeout=terminate
+    ${Wget output}=    Set Variable    ${Wget output.stdout}    #
+    Log    ${Wget output}
+    Should Contain    ${Wget output}    chromedriver_win32.zip' saved
+    ${Unzip output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}7za.exe    e    ${gTemp folder path}${/}chromedriver_win32.zip    -o${gTemp folder path}    stderr=STDOUT
+    ...    timeout=3 sec    on_timeout=terminate
+    ${Unzip output}=    Set Variable    ${Unzip output.stdout}
+    Should Contain    ${Unzip output}    Everything is Ok
+    Move File    ${gTemp folder path}${/}chromedriver.exe    C:${/}Python27
+    # Verify
+    ${Current driver version}=    Run Process    chromedriver    --version    stderr=STDOUT
+    ${Current driver version}=    Set Variable    ${Current driver version.stdout}
+    Should Contain    ${Current driver version}    ${Latest driver version}
+    Remove Files    ${gTemp folder path}${/}chromedirver_latest.txt
+    [Teardown]    Remove Files    ${gTemp folder path}${/}chromedriver_win32.zip*    ${gTemp folder path}${/}chromedriver.exe    ${gTemp folder path}${/}chromedirver_latest.txt*
+
+Update IEDriverServer
+    [Documentation]    Update current web drvier for this machine.
+    # First check if outside network is available
+    ${Return code}    ${Output}=    Run and Return RC And Output    ping 8.8.8.8 -n 1
+    Log    ${Return code}
+    Return From Keyword If    '${Return code}' != '0'
+    # Get lastest version number
+    ${Wget output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}wget.exe    --progress\=bar:force:noscroll    --no-check-certificate    -O    ${gTemp folder path}${/}iedriverserver.html
+    ...    https://www.seleniumhq.org/download/    stderr=STDOUT    timeout=10 sec    on_timeout=terminate
+    ${Wget output}=    Set Variable    ${Wget output.stdout}
+    Should Contain    ${Wget output}    iedriverserver.html' saved
+    ${Driver html page content}=    Get File    ${gTemp folder path}${/}iedriverserver.html
+    Log    ${Driver html page content}
+    Comment    ${Driver html page content}=    Replace String    ${Driver html page content}    \"    \\"
+    Comment    Log    ${Driver html page content}
+    ${Match}    ${Dirver download url}    Should Match Regexp    ${Driver html page content}    href=\\"(.*)\\">32 bit Windows IE</a>
+    ${Match}    ${Last driver version}    Should Match Regexp    ${Driver html page content}    Download version (.*) for \\(recommended\\)
+    Remove File    ${gTemp folder path}${/}iedriverserver.html
+    # Get current system driver version
+    ## Using ignore error to prevent commad error.
+    ${Status}    ${Current driver version}=    Run Keyword And Ignore Error    Run Process    IEDriverServer.exe    --version    timeout=3 sec
+    ...    on_timeout=terminate
+    ${Current driver version}    Set Variable If    "${Status}" == "PASS"    ${Current driver version.stdout}
+    # If driver is up-to-date, no need to re-download it.
+    ${Status}    ${Message}=    Run Keyword And Ignore Error    Should Contain    ${Current driver version.stdout}    ${Last driver version}
+    Return From Keyword If    "${Status}" == "PASS"
+    # Download latest driver
+    ${Wget output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}wget.exe    --progress\=bar:force:noscroll    --no-check-certificate    ${Dirver download url}    -O
+    ...    ${gTemp folder path}${/}IEDriverServer_Win32_${Last driver version}.zip    stderr=STDOUT    timeout=10 sec    on_timeout=terminate
+    ${Wget output}=    Set Variable    ${Wget output.stdout}
+    Should Contain    ${Wget output}    IEDriverServer_Win32_${Last driver version}.zip' saved
+    ${Unzip output}=    Run Process    ${CURDIR}${/}..${/}Tool${/}7za.exe    e    ${gTemp folder path}${/}IEDriverServer_Win32_${Last driver version}.zip    -o${gTemp folder path}    stderr=STDOUT
+    ...    timeout=3 sec    on_timeout=terminate
+    ${Unzip output}=    Set Variable    ${Unzip output.stdout}
+    Should Contain    ${Unzip output}    Everything is Ok
+    Move File    ${gTemp folder path}${/}IEDriverServer.exe    C:${/}Python27
+    # Verify
+    ${Current driver version}=    Run Process    IEDriverServer    --version
+    ${Current driver version}=    Set Variable    ${Current driver version.stdout}
+    Should Contain    ${Current driver version}    ${Last driver version}
+    Comment    Remove Files    ${gTemp folder path}${/}IEDriverServer_Win32_${Last driver version}.zip    ${gTemp folder path}${/}IEDriverServer.exe"    ${gTemp folder path}${/}iedriverserver.html
+    [Teardown]    Remove Files    ${gTemp folder path}${/}IEDriverServer_Win32_${Last driver version}.zip*    ${gTemp folder path}${/}IEDriverServer.exe    ${gTemp folder path}${/}iedriverserver.html*
+
+Check If File Downloaded Is Done
+    [Arguments]    ${File name}
+    [Documentation]    Downloaded file will save at default download folder, this keyword will check if there's such file name at default download folder.
+    # First at least check the temp file is created (downloading)
+    File SHould Exist    ${gDefault download dir}${/}*${File name}*
+    # Then Check completed file existed in the folder.
+    Wait Until Keyword Succeeds    3 mins    3 secs    File SHould Exist    ${gDefault download dir}${/}${File name}

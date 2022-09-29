@@ -1,0 +1,14 @@
+*** Variables ***
+${gTrello URL}    http://140.96.150.47:9093
+${gTest account}    u1
+${gTest password}    p1
+${gTest data path}    ${CURDIR}${/}..${/}Test Data
+${gOriginal browser ID}    ${EMPTY}    # The first opened browser ID, will need it if open multiple browsers.
+${gTemp folder path}    ${CURDIR}${/}..${/}Temp
+${gDefault download dir}    %{userprofile}${/}Downloads    # Windows default user download folder for browser.
+${gTest Topic}    設備維護預測
+${gUpload normal file}    upload_test_device_predict.csv
+${gTime prefix}    20180515134612
+&{gProject color}    gray=#edf2f3    blue=#B8E3FE    blue1=#b8fef7    green1=#b8fec2    green=#e6feb8    Yellow=#fee9b8    pink1=#FFCECE
+...               pink=#F1CEFF
+${gDefault browser}    ie

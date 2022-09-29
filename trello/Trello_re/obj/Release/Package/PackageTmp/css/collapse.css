@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* collapse icon */
+.collapseTitle{padding-left: 16px;position: relative;}
+.collapseTitle:before{
+position: absolute;
+font-family: 'FontAwesome';
+font-size:15px;
+color:#999;
+top:0;
+left:3px;
+content: "\f105";	
+}
+.collapseTitle.open:before{
+position: absolute;
+font-family: 'FontAwesome';
+font-size:15px;
+color:#999;
+top:0;
+left:0px;
+content: "\f107";
+}

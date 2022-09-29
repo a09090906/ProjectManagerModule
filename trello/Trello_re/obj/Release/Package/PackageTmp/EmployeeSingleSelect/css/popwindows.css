@@ -1,0 +1,236 @@
+﻿
+@charset "utf-8";
+/* CSS Document from wlwang, 這個css主要先將樣式做清除(移除)及框架設定*/
+
+/*margin及padding標準化*/
+body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td{margin:0px;padding:0px;}
+
+/*標題font-size標準化*/
+h1,h2,h3,h4,h5,h6{}
+
+/*移除ol,ul的樣式*/
+ul,ol{list-style:none;}
+
+/*將font-style及font-weight 標準化成normal*/
+address,kbd,th{font-style:normal;/*font-weight:normal;*/}
+
+/*移除table的外框*/
+table{border-collapse:collapse;border-spacing:0px;border:none;}
+
+/*th文字向左*/
+th,td{text-align:left;vertical-align:text-top;}
+
+/*移除fieldset和img的border*/
+fieldset,img{border:0px;}
+
+
+/*start layout
+-------------------------------------*/
+html{
+	background-color:#FFFFFF;/*20140808婉真修改*/
+	font-family:Arial, Helvetica, sans-serif;}
+
+body{
+	background:#ffffff;
+	margin:0px auto;
+	width:100%;
+	text-align:left;
+	position:relative;
+	color:#535353;	
+	voice-family: "\"}\""; 
+	voice-family:inherit;}
+	
+
+
+/*=html default====================================================================
+=====================================================================================*/
+a:link{color:#619209; text-decoration:none;}/*0da479*/
+a:visited{color:#8c9b94;text-decoration:none;}
+a:hover,a:active{color:#ff7000;text-decoration:none;}
+
+input{
+	color:#535353;
+	vertical-align:middle;}
+img{
+	margin:3px;
+	vertical-align:middle;
+	opacity:.5;}
+table{
+	margin:0px auto;
+	line-height:2.1em;
+	font-size:0.83em;}	
+table td table{
+	font-size:1em;}	
+
+/*for pop windows*/
+#pop_wrapper{
+	width:95%;
+	margin:0px auto;
+	text-align:left;
+	display:inline-block;
+	font-family:Verdana, Arial, Helvetica, sans-serif;}
+	
+.ui-tooltip, .arrow:after {
+	background: #555;/*background: black;*/
+	border: 2px solid white;
+	opacity:.95;/*new*/}
+	
+.ui-tooltip {
+	padding: 8px 10;/*padding: 10px 20px;*/
+	color: #FEFEFE;/*color: white;*/
+	border-radius: 8px;/*border-radius: 20px;*/
+	font-size:.75em;/*font: bold 14px "Helvetica Neue", Sans-Serif;*/
+	text-transform: uppercase;
+	box-shadow: 0 0 4px black;/*box-shadow: 0 0 7px black;*/}
+	
+.arrow {
+	width: 65px;/*70px*/
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -35px;/*-35px*/
+	bottom: -16px;}
+	
+.arrow.top {
+	top: -16px;
+	bottom: auto;}
+	
+.arrow.left {
+	left: 20%;}
+	
+.arrow:after {
+	content: "";
+	position: absolute;
+	left: 20px;
+	top: -20px;
+	width: 22px;/*25px*/
+	height: 22px;/*25px*/
+	box-shadow: 6px 5px 9px -9px black;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	tranform: rotate(45deg);}
+	
+.arrow.top:after {
+	bottom: -20px;
+	top: auto;}
+
+.pop_block{
+	width:620px;
+	padding:20px;
+	text-align:center;
+	display:inline-block;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	background-color:#ffffff;
+}
+	
+p.pop_title {
+	line-height:1.5em;
+	color:#000000;
+	font-size:16px;
+	padding:0px;
+	text-align:left;}
+	
+p.pop_search {
+	line-height:1em;
+	color:#999999;
+	font-size:1em;
+	padding:0px;
+	text-align:left;
+	margin-top:15px;}
+	
+table.pop_input {
+	width:100%;
+	line-height:1.5em;
+	margin:10px 0px;
+	color:#000000;
+	font-size:13px;
+	border-collapse:inherit;
+	border-spacing:5px 0px;
+	border:0px solid green;}
+		
+table.pop_input th{
+	line-height:1.5em;
+	font-weight:normal;
+	text-align:center;
+	vertical-align:middle; 
+	padding-left:5px;
+	background-color:#cecece;
+	border:1px solid #c7c7c7;}
+		
+table.pop_input td{
+	vertical-align:top;
+	line-height:1.5em;
+	background-color:#f3f3f3;
+	border-top:0px solid #c7c7c7;
+	border-right:1px solid #c7c7c7;
+	border-bottom:1px solid #c7c7c7;
+	border-left:1px solid #c7c7c7;
+	margin-left:10px;
+	text-align:left;
+	padding-left:5px;}
+						
+table.pop_input	select{	
+	background-color:#f3f3f3;
+	border:0px solid #c7c7c7;}
+		
+table.pop_input	input{	
+	background-color:#f3f3f3;
+	border:0px solid #c7c7c7;}	
+	
+table.pop_input th input{background-color: #cecece;}
+
+		
+table.pop_input th.select_blue{
+	border:1px solid #3486c4;
+	background-color:#3486c4;
+	color:#FFFFFF;}
+	
+table.pop_input td.select_blue{
+	line-height:1.5em;
+	background-color:#e9f0f5;
+	border:1px solid #3486c4;
+	text-align:left;}
+	
+table.pop_input	select.select_blue{
+	background-color:#e9f0f5;
+	width:130px;}
+	
+.clear{ clear:both;} 
+	
+	
+/*button=========================================================================
+=======================================================================================*/
+input.btn{
+	background:url(../images/btn_bg.jpg) repeat-x;
+	height:17px;
+	font-size:13px;
+	padding:2px 10px;
+	margin:2px 0px 2px 2px;
+	border:1px solid #AACAED;
+	line-height:17px;
+	border:none;
+	cursor:pointer;}
+		
+input.image_btn{
+	border-width:0px;
+	cursor:pointer;	
+	vertical-align:middle;}
+		
+.btn_align{
+	text-align:right;
+	width:100%;}
+	
+/*=hor_page*/
+	table.hor_page{
+		margin:5px auto 5px auto;}
+	table.hor_page td{
+		height:10px;
+		vertical-align:middle;}
+	table.hor_page td img{
+		border:none;margin:0px 5px;}	
+		
+		
+		
